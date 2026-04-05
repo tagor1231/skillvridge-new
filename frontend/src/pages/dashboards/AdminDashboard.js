@@ -62,7 +62,16 @@ const AdminDashboard = () => {
 
       // Fetch all users
       const usersRes = await axios.get(`${API_BASE_URL}/admin/users`, config);
-      setUsers(Array.isArray(usersRes.data) ? usersRes.data : []);
+      console.log("usersRes.data =", usersRes.data);
+      setUsers(
+       Array.isArray(usersRes.data)
+         ? usersRes.data
+         : Array.isArray(usersRes.data?.users)
+         ? usersRes.data.users
+         : Array.isArray(usersRes.data?.data)
+         ? usersRes.data.data
+         : []
+      );
 
       // Fetch all jobs
       const jobsRes = await axios.get(`${API_BASE_URL}/jobs?limit=100`, config);
