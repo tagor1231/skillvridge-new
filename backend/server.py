@@ -43,6 +43,11 @@ security = HTTPBearer()
 
 # Create FastAPI app
 app = FastAPI(title="SkillBridge API")
+
+@app.get("/")
+async def home():
+    return {"message": "SkillBridge API Running 🚀"}
+
 api_router = APIRouter(prefix="/api")
 
 
