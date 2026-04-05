@@ -51,17 +51,22 @@ const AdminDashboard = () => {
       ]);
 
       setStats(statsRes.data);
-      setPendingFarms(farmsRes.data.filter(f => !f.is_approved));
-      setPendingStories(storiesRes.data.filter(s => !s.is_approved));
+      setPendingFarms(
+        (Array.isArray(farmsRes.data) ? farmsRes.data : []).filter(f => !f.is_approved)
+        );
+
+      setPendingStories(
+       (Array.isArray(storiesRes.data) ? storiesRes.data : []).filter(s => !s.is_approved)
+       );
       setCourses(coursesRes.data);
 
       // Fetch all users
       const usersRes = await axios.get(`${API_BASE_URL}/admin/users`, config);
-      setUsers(usersRes.data || []);
+      setUsers(Array.isArray(usersRes.data) ? usersRes.data : []);
 
       // Fetch all jobs
       const jobsRes = await axios.get(`${API_BASE_URL}/jobs?limit=100`, config);
-      setJobs(jobsRes.data || []);
+      setJobs(Array.isArray(jobsRes.data) ? jobsRes.data : []);
     } catch (error) {
       console.error('Failed to fetch admin data:', error);
     } finally {
@@ -294,32 +299,43 @@ const AdminDashboard = () => {
                 </div>
 
                 <div className="border border-gray-200 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">User Distribution</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Students</span>
-                      <span className="font-semibold">{users.filter(u => u.role === 'student').length}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Job Seekers</span>
-                      <span className="font-semibold">{users.filter(u => u.role === 'job_seeker').length}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Farmers</span>
-                      <span className="font-semibold">{users.filter(u => u.role === 'farmer').length}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Job Providers</span>
-                      <span className="font-semibold">{users.filter(u => u.role === 'job_provider').length}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+  <h3 className="text-lg font-semibold text-gray-900 mb-4">User Distribution</h3>
+  <div className="space-y-3">
+    <div className="flex justify-between items-center">
+      <span className="text-gray-600">Students</span>
+      <span className="font-semibold">
+        {(Array.isArray(users) ? users : []).filter((u) => u.role === "student").length}
+      </span>
+    </div>
+
+    <div className="flex justify-between items-center">
+      <span className="text-gray-600">Job Seekers</span>
+      <span className="font-semibold">
+        {(Array.isArray(users) ? users : []).filter((u) => u.role === "job_seeker").length}
+      </span>
+    </div>
+
+    <div className="flex justify-between items-center">
+      <span className="text-gray-600">Farmers</span>
+      <span className="font-semibold">
+        {(Array.isArray(users) ? users : []).filter((u) => u.role === "farmer").length}
+      </span>
+    </div>
+
+    <div className="flex justify-between items-center">
+      <span className="text-gray-600">Job Providers</span>
+      <span className="font-semibold">
+        {(Array.isArray(users) ? users : []).filter((u) => u.role === "job_provider").length}
+      </span>
+    </div>
+  </div>
+</div>
 
               <div className="border border-gray-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
                 <p className="text-gray-600">Platform activity monitoring coming soon...</p>
               </div>
+            </div>
             </div>
           )}
 
