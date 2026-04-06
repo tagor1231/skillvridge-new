@@ -1002,6 +1002,7 @@ async def get_all_users(current_user: dict = Depends(get_current_user)):
         raise HTTPException(status_code=403, detail="Admin access required")
 
     users = await db.users.find({}, {"_id": 0, "password_hash": 0}).to_list(1000)
+    print("USERS FROM DB =", users)
     return users
 
 
