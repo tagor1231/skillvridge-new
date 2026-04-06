@@ -68,7 +68,7 @@ const Landing = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all   border-b-4 border-blue-500">
               <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                 <Briefcase className="text-blue-600" size={32} />
               </div>
@@ -78,7 +78,7 @@ const Landing = () => {
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all border-b-4 border-blue-500">
               <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
                 <GraduationCap className="text-purple-600" size={32} />
               </div>
@@ -88,7 +88,7 @@ const Landing = () => {
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all border-b-4 border-blue-500">
               <div className="w-16 h-16 bg-pink-100 rounded-lg flex items-center justify-center mb-6">
                 <Award className="text-pink-600" size={32} />
               </div>
@@ -98,7 +98,7 @@ const Landing = () => {
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all border-b-4 border-blue-500">
               <div className="w-16 h-16 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
                 <TrendingUp className="text-indigo-600" size={32} />
               </div>
@@ -108,7 +108,7 @@ const Landing = () => {
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all border-b-4 border-blue-500">
               <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
                 <Users className="text-green-600" size={32} />
               </div>
@@ -118,7 +118,7 @@ const Landing = () => {
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all border-b-4 border-blue-500">
               <div className="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mb-6">
                 <Target className="text-yellow-600" size={32} />
               </div>
