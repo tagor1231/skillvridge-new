@@ -72,6 +72,16 @@ const AdminDashboard = () => {
          ? usersRes.data.data
          : []
       );
+      console.log(
+         "parsed users =",
+         Array.isArray(usersRes.data)
+         ? usersRes.data
+         : Array.isArray(usersRes.data?.users)
+         ? usersRes.data.users
+         : Array.isArray(usersRes.data?.data)
+        ? usersRes.data.data
+       : []
+     );
 
       // Fetch all jobs
       const jobsRes = await axios.get(`${API_BASE_URL}/jobs?limit=100`, config);
@@ -351,6 +361,7 @@ const AdminDashboard = () => {
           {/* Users Tab */}
           {activeTab === 'users' && (
             <div>
+              {console.log("users state =", users)}
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-gray-900">User Management</h2>
                 <div className="flex items-center space-x-4">
