@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { analyticsAPI, farmAPI, successStoryAPI, courseAPI } from '../../services/api';
 import { Users, Briefcase, BookOpen, Sprout, Award, TrendingUp, CheckCircle, XCircle, Eye, Shield } from 'lucide-react';
-import axios from 'axios';
+import api from '../../services/api';
 
-const API_BASE_URL = process.env.REACT_APP_BACKEND_URL + '/api';
+
+
 
 const AdminDashboard = () => {
   const { user } = useAuth();
@@ -61,7 +62,7 @@ const AdminDashboard = () => {
       setCourses(coursesRes.data);
 
       // Fetch all users
-      const usersRes = await axios.get(`${API_BASE_URL}/admin/users`, config);
+      const usersRes = await api.get('/admin/users');
       console.log("usersRes.data =", usersRes.data);
       setUsers(
        Array.isArray(usersRes.data)
@@ -84,7 +85,7 @@ const AdminDashboard = () => {
      );
 
       // Fetch all jobs
-      const jobsRes = await axios.get(`${API_BASE_URL}/jobs?limit=100`, config);
+      const jobsRes = await api.get('/jobs?limit=100');
       setJobs(Array.isArray(jobsRes.data) ? jobsRes.data : []);
     } catch (error) {
       console.error('Failed to fetch admin data:', error);
